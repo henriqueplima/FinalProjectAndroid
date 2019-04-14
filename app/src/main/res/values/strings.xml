@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FinalProjectAndroid</string>
+    <string name="txtEmail">Email</string>
+    <string name="txtPassword">Password</string>
+    <string name="txtSignIn">Sign In</string>
+    <string name="txtSignUp">Sign Up</string>
+    <string name="txtName">Name</string>
+    <string name="txtLastName">Last Name</string>
 </resources>
