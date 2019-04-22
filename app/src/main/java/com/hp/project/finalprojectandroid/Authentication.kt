@@ -41,5 +41,17 @@ class Authentication() {
 
     }
 
+    fun createUser(email:String, senha:String, nome:String, sobrenome:String, callBackSucesso: () -> Unit, callbackFalha:(String) -> Unit) {
+
+        mAuth.createUserWithEmailAndPassword(email,senha).addOnCompleteListener {
+            if (it.isSuccessful) {
+                //TODO criar dados usuario
+            }else {
+                //
+            }
+        }
+
+    }
+
 
 }
