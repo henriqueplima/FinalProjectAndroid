@@ -6,4 +6,5 @@
     <string name="txtSignUp">Cadastre-se</string>
     <string name="txtName">Nome</string>
     <string name="txtLastName">Sobrenome</string>
+    <string name="mensagemErroLogin"> Erro ao efetuar o login</string>
 </resources>

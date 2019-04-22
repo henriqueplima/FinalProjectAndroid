@@ -5,5 +5,10 @@
     <string name="txtSignIn">Sign In</string>
     <string name="txtSignUp">Sign Up</string>
     <string name="txtName">Name</string>
+    <string name="mensagemErroLogin"> Error in login attempt</string>
     <string name="txtLastName">Last Name</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
