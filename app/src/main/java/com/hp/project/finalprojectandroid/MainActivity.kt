@@ -1,16 +1,48 @@
 package com.hp.project.finalprojectandroid
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseUser
+import com.hp.project.finalprojectandroid.api.Api
+import com.hp.project.finalprojectandroid.api.RetrofitBuilder
 import com.hp.project.finalprojectandroid.extensions.isValidEmail
 import com.hp.project.finalprojectandroid.extensions.isValidPassword
+import com.hp.project.finalprojectandroid.featureHome.HomeActivity
+import com.hp.project.finalprojectandroid.models.LucaoResponse
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
+    val auth = Authentication()
+
+    override fun onResume() {
+        super.onResume()
+
+        if (auth.isLogged()) {
+            navegarTelaPrincipal()
+        }
+
+
+        val api = RetrofitBuilder.createRetrofit().create(Api::class.java)
+
+        api.buscarApiLucao().enqueue(object: Callback<LucaoResponse> {
+
+
+            override fun onFailure(call: Call<LucaoResponse>, t: Throwable) {
+                Log.e("TAG", "deu ruim", t)
+            }
+
+            override fun onResponse(call: Call<LucaoResponse>, response: Response<LucaoResponse>) {
+                Log.e("TAG", response.body().toString())
+            }
+
+        })
+    }
 
     override fun onStart() {
         super.onStart()
@@ -19,11 +51,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val auth = Authentication()
-        if (auth.isLogged()) {
-            navegarTelaPrincipal()
-        }
 
         btnAcessar.setOnClickListener {
 

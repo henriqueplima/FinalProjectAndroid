@@ -31,7 +31,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.google.firebase:firebase-auth:16.0.3'
     implementation 'com.android.support:design:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -39,5 +38,13 @@ dependencies {
 
     def lifecycle_version = "2.0.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    implementation 'com.google.firebase:firebase-database:16.0.1'
+    def firebase_version = "16.1.0"
+    implementation "com.google.firebase:firebase-database:$firebase_version"
+    implementation "com.google.firebase:firebase-auth:$firebase_version"
+    def retrofit_version = "2.5.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:3.12.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.12.0"
+    implementation 'com.squareup.okio:okio:1.15.0'
 }

@@ -1,7 +1,8 @@
 package com.hp.project.finalprojectandroid
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.hp.project.finalprojectandroid.extensions.isValidEmail
 import com.hp.project.finalprojectandroid.extensions.isValidPassword
 import kotlinx.android.synthetic.main.activity_cadastro.*
@@ -21,9 +22,19 @@ class CadastroActivity : AppCompatActivity() {
 
             if (email.isValidEmail() && senha.isValidPassword() && nome.length > 0 && sobrenome.length > 0) {
                 var auth = Authentication()
+                auth.createUser(email, senha, nome, sobrenome, {
+                    exibirAlerta("usuario criado com sucesso")
+                    finish()
+                },{
+                    exibirAlerta(it)
+                })
             }
 
         }
 
+    }
+
+    fun exibirAlerta(mensagem:String) {
+        Toast.makeText(this,mensagem, Toast.LENGTH_SHORT).show()
     }
 }

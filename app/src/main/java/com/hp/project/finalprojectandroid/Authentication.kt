@@ -2,6 +2,8 @@ package com.hp.project.finalprojectandroid
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
+import com.hp.project.finalprojectandroid.models.Usuario
 
 class Authentication() {
 
@@ -41,15 +43,33 @@ class Authentication() {
 
     }
 
-    fun createUser(email:String, senha:String, nome:String, sobrenome:String, callBackSucesso: () -> Unit, callbackFalha:(String) -> Unit) {
+    fun createUser(email:String, senha:String, nome:String, sobrenome:String, callBackSucesso: (Usuario) -> Unit, callbackFalha:(String) -> Unit) {
 
         mAuth.createUserWithEmailAndPassword(email,senha).addOnCompleteListener {
             if (it.isSuccessful) {
-                //TODO criar dados usuario
+                var user = Usuario(nome,  sobrenome, email)
+                saveUserData(user, callBackSucesso,callbackFalha)
             }else {
-                //
+                print(it.exception?.message)
+                callbackFalha("Falha na autenticacao")
             }
         }
+
+    }
+
+    fun saveUserData(usuario: Usuario, callBackSucesso: (Usuario) -> Unit, callbackFalha:(String) -> Unit) {
+
+        FirebaseDatabase.getInstance().getReference("Users")
+            .child(FirebaseAuth.getInstance().currentUser!!.uid)
+            .setValue(usuario)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    callBackSucesso(usuario)
+                } else {
+                    print(it.exception?.message)
+                    callbackFalha("erro ao criar usuario")
+                }
+            }
 
     }
 
