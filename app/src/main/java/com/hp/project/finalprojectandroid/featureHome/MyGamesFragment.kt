@@ -1,8 +1,8 @@
 package com.hp.project.finalprojectandroid.featureHome
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,18 +24,25 @@ class MyGamesFragment(): Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        rvGamesList.adapter = MyGamesAdapter(listOf(Game("Resident Evil"),
-            Game("Fifa 17"),
-            Game("Need For Speed"),
-            Game("Naruto"),
-            Game("Call of Dutty"),
-            Game("Pes 2019"),
-            Game("Uncharted 4")),this)
+
         return inflater.inflate(R.layout.fragment_meus_games, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.let {
+            rvGamesList.adapter = MyGamesAdapter(listOf(
+                Game("Resident Evil", "T"),
+                Game("Fifa 17","t"),
+                Game("Need For Speed","t"),
+                Game("Naruto","t"),
+                Game("Call of Dutty","t"),
+                Game("Pes 2019","t"),
+                Game("Uncharted 4","t")
+            ),it)
+            rvGamesList.layoutManager = LinearLayoutManager(it)
+        }
 
 
     }

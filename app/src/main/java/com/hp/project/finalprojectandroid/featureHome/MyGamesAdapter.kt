@@ -2,6 +2,7 @@ package com.hp.project.finalprojectandroid.featureHome
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,9 @@ class MyGamesAdapter(val gamesList:List<Game>,
 
         fun bindView(game:Game) {
             itemView.tvTitle.text = game.titulo
+            itemView.setOnClickListener {
+                Log.e("meu log",game.titulo)
+            }
         }
 
     }
