@@ -18,6 +18,7 @@ class MyGamesViewModel(application: Application) : AndroidViewModel(application)
 
     fun fetchGames() {
         games = bd.gameDao().selectGames()
+//        return games
     }
 
 }

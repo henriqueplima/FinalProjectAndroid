@@ -1,18 +1,19 @@
 package com.hp.project.finalprojectandroid.featureHome
 
+
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.arch.lifecycle.ViewModelProviders
-import android.arch.lifecycle.Observer
 import com.hp.project.finalprojectandroid.R
 import com.hp.project.finalprojectandroid.models.Game
 import kotlinx.android.synthetic.main.fragment_meus_games.*
 
-class MyGamesFragment(): Fragment() {
+class MyGamesFragment: Fragment() {
 
     private var  adapter: MyGamesAdapter? = null
     private var games : List<Game> = listOf()
@@ -44,6 +45,8 @@ class MyGamesFragment(): Fragment() {
             adapter = MyGamesAdapter(games)
             rvGamesList.adapter = adapter
 
+//            rvGamesList.adapter = MyGamesAdapter(listOf())
+
 
 //            rvGamesList.adapter = MyGamesAdapter(listOf(
 //                Game("Resident Evil", "T"),
@@ -55,6 +58,19 @@ class MyGamesFragment(): Fragment() {
 //                Game("Uncharted 4","t")
 //            ))
             rvGamesList.layoutManager = LinearLayoutManager(it)
+
+//            val bd : AppDataBase = AppDataBase.getDatabase(it.applicationContext)!!
+//
+//
+//           val gameLiveData = bd.gameDao().selectGames()
+//            gameLiveData.observe(it, Observer { games ->
+//                games?.let {
+//                    adapter?.setList(games)
+//                    rvGamesList.adapter?.notifyDataSetChanged()
+//                }
+//            })
+
+
 
             ViewModelProviders.of(it)
                 .get(MyGamesViewModel::class.java)
