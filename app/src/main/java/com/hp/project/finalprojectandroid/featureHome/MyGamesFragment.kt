@@ -6,11 +6,16 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.arch.lifecycle.ViewModelProviders
+import android.arch.lifecycle.Observer
 import com.hp.project.finalprojectandroid.R
 import com.hp.project.finalprojectandroid.models.Game
 import kotlinx.android.synthetic.main.fragment_meus_games.*
 
 class MyGamesFragment(): Fragment() {
+
+    private var  adapter: MyGamesAdapter? = null
+    private var games : List<Game> = listOf()
 
     companion object {
 
@@ -31,17 +36,35 @@ class MyGamesFragment(): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
+
         activity?.let {
-            rvGamesList.adapter = MyGamesAdapter(listOf(
-                Game("Resident Evil", "T"),
-                Game("Fifa 17","t"),
-                Game("Need For Speed","t"),
-                Game("Naruto","t"),
-                Game("Call of Dutty","t"),
-                Game("Pes 2019","t"),
-                Game("Uncharted 4","t")
-            ),it)
+
+            adapter = MyGamesAdapter(games)
+            rvGamesList.adapter = adapter
+
+
+//            rvGamesList.adapter = MyGamesAdapter(listOf(
+//                Game("Resident Evil", "T"),
+//                Game("Fifa 17","t"),
+//                Game("Need For Speed","t"),
+//                Game("Naruto","t"),
+//                Game("Call of Dutty","t"),
+//                Game("Pes 2019","t"),
+//                Game("Uncharted 4","t")
+//            ))
             rvGamesList.layoutManager = LinearLayoutManager(it)
+
+            ViewModelProviders.of(it)
+                .get(MyGamesViewModel::class.java)
+            .games
+            .observe(it, Observer<List<Game>> { games ->
+                adapter?.setList(games!!)
+                rvGamesList.adapter?.notifyDataSetChanged()
+            })
+
+
         }
 
 

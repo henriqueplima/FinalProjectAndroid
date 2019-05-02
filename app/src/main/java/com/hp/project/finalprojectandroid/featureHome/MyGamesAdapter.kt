@@ -10,12 +10,15 @@ import com.hp.project.finalprojectandroid.R
 import com.hp.project.finalprojectandroid.models.Game
 import kotlinx.android.synthetic.main.game_item.view.*
 
-class MyGamesAdapter(val gamesList:List<Game>,
-                     val context: Context) :
+class MyGamesAdapter(var gamesList:List<Game>) :
     RecyclerView.Adapter<MyGamesAdapter.ViewHolder>() {
 
+    fun setList(newList: List<Game>) {
+        gamesList = newList
+    }
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-       val view = LayoutInflater.from(context).inflate(R.layout.game_item,p0,false)
+       val view = LayoutInflater.from(p0.context).inflate(R.layout.game_item,p0,false)
         return ViewHolder(view)
     }
 

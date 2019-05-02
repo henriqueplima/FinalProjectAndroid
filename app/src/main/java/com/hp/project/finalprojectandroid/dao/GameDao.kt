@@ -1,5 +1,6 @@
 package com.hp.project.finalprojectandroid.dao
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
@@ -12,6 +13,6 @@ interface GameDao {
     fun insertGames(game: Game)
 
     @Query("SELECT * FROM Game")
-    fun selectGames():List<Game>
+    fun selectGames():LiveData<List<Game>>
 
 }
