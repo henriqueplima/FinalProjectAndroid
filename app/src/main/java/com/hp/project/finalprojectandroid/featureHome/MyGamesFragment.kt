@@ -3,6 +3,8 @@ package com.hp.project.finalprojectandroid.featureHome
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -10,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hp.project.finalprojectandroid.R
+import com.hp.project.finalprojectandroid.featureCadastroGames.CadastroGameActivity
+import com.hp.project.finalprojectandroid.mappers.GameMapper
 import com.hp.project.finalprojectandroid.models.Game
 import kotlinx.android.synthetic.main.fragment_meus_games.*
 
@@ -37,40 +41,19 @@ class MyGamesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
         activity?.let {
 
-            adapter = MyGamesAdapter(games)
+            adapter = MyGamesAdapter(games, { gameSelected ->
+                navigationToAddGameActivity(it, gameSelected)
+            })
             rvGamesList.adapter = adapter
 
-//            rvGamesList.adapter = MyGamesAdapter(listOf())
-
-
-//            rvGamesList.adapter = MyGamesAdapter(listOf(
-//                Game("Resident Evil", "T"),
-//                Game("Fifa 17","t"),
-//                Game("Need For Speed","t"),
-//                Game("Naruto","t"),
-//                Game("Call of Dutty","t"),
-//                Game("Pes 2019","t"),
-//                Game("Uncharted 4","t")
-//            ))
             rvGamesList.layoutManager = LinearLayoutManager(it)
 
-//            val bd : AppDataBase = AppDataBase.getDatabase(it.applicationContext)!!
-//
-//
-//           val gameLiveData = bd.gameDao().selectGames()
-//            gameLiveData.observe(it, Observer { games ->
-//                games?.let {
-//                    adapter?.setList(games)
-//                    rvGamesList.adapter?.notifyDataSetChanged()
-//                }
-//            })
 
-
+            btnAdicionar.setOnClickListener { view ->
+                navigationToAddGameActivity(it, null)
+            }
 
             ViewModelProviders.of(it)
                 .get(MyGamesViewModel::class.java)
@@ -85,4 +68,13 @@ class MyGamesFragment: Fragment() {
 
 
     }
+
+    fun navigationToAddGameActivity(context: Context, game: Game?) {
+        val intent = Intent(context, CadastroGameActivity::class.java)
+        game?.let {
+            intent.putExtra("game", GameMapper.mapToViewObject(it))
+        }
+        startActivity(intent)
+    }
+
 }

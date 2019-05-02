@@ -1,8 +1,6 @@
 package com.hp.project.finalprojectandroid.featureHome
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +8,7 @@ import com.hp.project.finalprojectandroid.R
 import com.hp.project.finalprojectandroid.models.Game
 import kotlinx.android.synthetic.main.game_item.view.*
 
-class MyGamesAdapter(var gamesList:List<Game>) :
+class MyGamesAdapter(var gamesList:List<Game>, val selectedAction:(Game) -> Unit) :
     RecyclerView.Adapter<MyGamesAdapter.ViewHolder>() {
 
     fun setList(newList: List<Game>) {
@@ -28,16 +26,16 @@ class MyGamesAdapter(var gamesList:List<Game>) :
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val game = gamesList[p1]
-        p0.bindView(game)
+        p0.bindView(game, selectedAction)
     }
 
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val title = itemView.tvTitle
 
-        fun bindView(game:Game) {
+        fun bindView(game:Game, selectedAction: (Game) -> Unit) {
             itemView.tvTitle.text = game.titulo
             itemView.setOnClickListener {
-                Log.e("meu log",game.titulo)
+                selectedAction(game)
             }
         }
 
