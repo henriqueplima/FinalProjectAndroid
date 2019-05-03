@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".featureSobre.AboutAppFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+            android:text="Henrique Pereira de Lima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/tvAutor"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+    <ImageView
+            android:src="@drawable/logo2"
+            android:layout_width="150dp"
+            android:layout_height="150dp" tools:src="@tools:sample/avatars"
+            android:id="@+id/imageView3" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="33dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="80dp" app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+            android:text="tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvVersion" android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvAutor" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+</android.support.constraint.ConstraintLayout>

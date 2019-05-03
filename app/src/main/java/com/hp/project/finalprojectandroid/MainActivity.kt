@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.iid.FirebaseInstanceId
 import com.hp.project.finalprojectandroid.api.Api
 import com.hp.project.finalprojectandroid.api.RetrofitBuilder
 import com.hp.project.finalprojectandroid.extensions.isValidEmail
@@ -76,6 +77,13 @@ class MainActivity : AppCompatActivity() {
         btnCadastrar.setOnClickListener {
             val intent = Intent(this, CadastroActivity::class.java)
             startActivity(intent)
+        }
+
+        var token = FirebaseInstanceId.getInstance().token
+        Log.d("teste","Token : "+token)
+        var bodyMessage= intent.getStringExtra("Notification")
+        if(bodyMessage != null){
+            Log.d("teste","foi")
         }
     }
 
