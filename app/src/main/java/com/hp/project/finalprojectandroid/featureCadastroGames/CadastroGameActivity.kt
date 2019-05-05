@@ -1,7 +1,9 @@
 package com.hp.project.finalprojectandroid.featureCadastroGames
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.hp.project.finalprojectandroid.R
 import com.hp.project.finalprojectandroid.featureHome.MyGamesViewModel
 import com.hp.project.finalprojectandroid.mappers.GameMapper
@@ -22,6 +24,7 @@ class CadastroGameActivity : AppCompatActivity() {
             isNewGame = false
             tvTitulo.setText(game.titulo)
             tvDescricao.setText(game.descricao)
+            btShare.visibility = View.VISIBLE
         }
 
         btCadastrar.setOnClickListener {
@@ -38,7 +41,19 @@ class CadastroGameActivity : AppCompatActivity() {
                 val newGame = GameMapper.mapToRoomObject(game!!)
                 MyGamesViewModel(this.application).updateGame(newGame)
             }
+            finish()
+        }
 
+        btShare.setOnClickListener {
+            val intent = Intent()
+            val text = "Game: " + game?.titulo + "\n \n Descrição: " + game?.descricao
+            intent.action = Intent.ACTION_SEND
+            intent.putExtra( Intent.EXTRA_TEXT, text )
+            intent.type = "text/plain"
+
+            if( intent.resolveActivity( packageManager ) != null ) {
+                startActivity( intent )
+            }
         }
     }
 }
