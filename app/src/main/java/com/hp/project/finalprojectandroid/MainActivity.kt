@@ -29,20 +29,20 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val api = RetrofitBuilder.createRetrofit().create(Api::class.java)
-
-        api.buscarApiLucao().enqueue(object: Callback<LucaoResponse> {
-
-
-            override fun onFailure(call: Call<LucaoResponse>, t: Throwable) {
-                Log.e("TAG", "deu ruim", t)
-            }
-
-            override fun onResponse(call: Call<LucaoResponse>, response: Response<LucaoResponse>) {
-                Log.e("TAG", response.body().toString())
-            }
-
-        })
+//        val api = RetrofitBuilder.createRetrofit().create(Api::class.java)
+//
+//        api.buscarApiLucao().enqueue(object: Callback<LucaoResponse> {
+//
+//
+//            override fun onFailure(call: Call<LucaoResponse>, t: Throwable) {
+//                Log.e("TAG", "deu ruim", t)
+//            }
+//
+//            override fun onResponse(call: Call<LucaoResponse>, response: Response<LucaoResponse>) {
+//                Log.e("TAG", response.body().toString())
+//            }
+//
+//        })
     }
 
     override fun onStart() {
