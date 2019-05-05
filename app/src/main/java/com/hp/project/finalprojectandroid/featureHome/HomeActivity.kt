@@ -5,6 +5,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.hp.project.finalprojectandroid.R
+import com.hp.project.finalprojectandroid.featureMaps.MyMapsFragment
 import com.hp.project.finalprojectandroid.featureSobre.AboutAppFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -17,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
+                changeFragment(MyMapsFragment.newInstance())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
