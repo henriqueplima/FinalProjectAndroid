@@ -1,9 +1,12 @@
 package com.hp.project.finalprojectandroid
 
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.hp.project.finalprojectandroid.models.Usuario
+import android.support.v4.app.Fragment
+import android.support.v4.content.res.TypedArrayUtils.getString
 
 class Authentication() {
 
@@ -51,7 +54,7 @@ class Authentication() {
                 saveUserData(user, callBackSucesso,callbackFalha)
             }else {
                 print(it.exception?.message)
-                callbackFalha("Falha na autenticacao")
+                callbackFalha("erro na autenticacao")
             }
         }
 

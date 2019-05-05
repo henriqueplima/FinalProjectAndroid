@@ -1,10 +1,7 @@
 package com.hp.project.finalprojectandroid.dao
 
 import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
-import android.arch.persistence.room.Update
+import android.arch.persistence.room.*
 import com.hp.project.finalprojectandroid.models.Game
 
 @Dao
@@ -18,6 +15,9 @@ interface GameDao {
 
     @Update
     fun updateGame(game: Game)
+
+    @Delete
+    fun remove(game:Game)
 
 
 }

@@ -6,12 +6,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".featureMaps.MyMapsFragment" />
+            android:layout_height="match_parent">
+
+        <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".featureMaps.MyMapsFragment"/>
+        <android.support.design.widget.FloatingActionButton android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:id="@+id/btOpenMaps"
+                                                            android:layout_margin="16dp"
+                                                            android:src="@drawable/map"
+                                                            android:layout_marginBottom="8dp"
+                                                            map:layout_constraintBottom_toBottomOf="parent"
+                                                            android:layout_marginEnd="8dp"
+                                                            map:layout_constraintEnd_toEndOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+
 
 </FrameLayout>
 

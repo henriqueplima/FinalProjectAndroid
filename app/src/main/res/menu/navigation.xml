@@ -9,11 +9,11 @@
     <item
             android:id="@+id/navigation_dashboard"
             android:icon="@drawable/icon_maps"
-            android:title="Mapa"/>
+            android:title="@string/title_maps"/>
 
     <item
             android:id="@+id/navigation_notifications"
             android:icon="@drawable/icon_config"
-            android:title="Config"/>
+            android:title="@string/title_about"/>
 
 </menu>

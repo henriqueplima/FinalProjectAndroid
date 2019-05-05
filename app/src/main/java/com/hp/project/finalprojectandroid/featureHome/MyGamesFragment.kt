@@ -45,6 +45,9 @@ class MyGamesFragment: Fragment() {
 
             adapter = MyGamesAdapter(games, { gameSelected ->
                 navigationToAddGameActivity(it, gameSelected)
+            }, {
+                val appli = this.activity!!.application
+                MyGamesViewModel(appli).deleteGames(it)
             })
             rvGamesList.adapter = adapter
 

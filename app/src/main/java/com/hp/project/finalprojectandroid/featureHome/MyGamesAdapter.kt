@@ -8,11 +8,12 @@ import com.hp.project.finalprojectandroid.R
 import com.hp.project.finalprojectandroid.models.Game
 import kotlinx.android.synthetic.main.game_item.view.*
 
-class MyGamesAdapter(var gamesList:List<Game>, val selectedAction:(Game) -> Unit) :
+class MyGamesAdapter(var gamesList:List<Game>, val selectedAction:(Game) -> Unit, val removeAction:(Game) -> Unit) :
     RecyclerView.Adapter<MyGamesAdapter.ViewHolder>() {
 
     fun setList(newList: List<Game>) {
         gamesList = newList
+
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
@@ -26,16 +27,20 @@ class MyGamesAdapter(var gamesList:List<Game>, val selectedAction:(Game) -> Unit
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val game = gamesList[p1]
-        p0.bindView(game, selectedAction)
+        p0.bindView(game, selectedAction, removeAction)
     }
 
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val title = itemView.tvTitle
 
-        fun bindView(game:Game, selectedAction: (Game) -> Unit) {
+        fun bindView(game:Game, selectedAction: (Game) -> Unit, removeAction: (Game) -> Unit) {
             itemView.tvTitle.text = game.titulo
             itemView.setOnClickListener {
                 selectedAction(game)
+
+            }
+            itemView.btRemove.setOnClickListener {
+               removeAction(game)
             }
         }
 

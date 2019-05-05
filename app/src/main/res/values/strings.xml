@@ -7,10 +7,26 @@
     <string name="txtName">Name</string>
     <string name="mensagemErroLogin">Error in login attempt</string>
     <string name="txtLastName">Last Name</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">Home</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_maps">Maps</string>
+    <string name="title_about">About</string>
+
+    <!-- AUTHENTICATION -->
+    <string name="authentication_fail">Failed Authentication</string>
+    <string name="createUser_fail">Failed to create user</string>
+
+    <!-- Cadastro Game -->
+    <string name="title_Hint">Title</string>
+    <string name="description_hint">Description</string>
+    <string name="add_button">Add Item</string>
+    <string name="share_button2">Share</string>
+
+    <!-- About View -->
+    <string name="author">Author</string>
+    <string name="version">Version</string>
+    <string name="callToDev">Call to Dev</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

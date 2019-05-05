@@ -7,4 +7,24 @@
     <string name="txtName">Nome</string>
     <string name="txtLastName">Sobrenome</string>
     <string name="mensagemErroLogin"> Erro ao efetuar o login</string>
+    <string name="title_activity_home">Inicio</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_maps">Mapa</string>
+    <string name="title_about">Sobre</string>
+
+    <!-- AUTHENTICATION -->
+    <string name="authentication_fail">Falha na autenticação</string>
+    <string name="createUser_fail">Falha ao criar o usuáro</string>
+
+    <!-- Cadastro Game -->
+    <string name="title_Hint">Titulo</string>
+    <string name="description_hint">Descricao</string>
+    <string name="add_button">Adicionar</string>
+    <string name="share_button2">Compartilhar</string>
+
+    <!-- About View -->
+    <string name="author">Autor</string>
+    <string name="version">Versão</string>
+    <string name="callToDev">Ligar pro Dev</string>
+
 </resources>

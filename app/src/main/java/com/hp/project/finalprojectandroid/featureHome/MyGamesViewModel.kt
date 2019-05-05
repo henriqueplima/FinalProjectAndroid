@@ -31,6 +31,18 @@ class MyGamesViewModel(application: Application) : AndroidViewModel(application)
         InsertAsyncTaskUpdate().execute(game)
     }
 
+    fun deleteGames(game:Game) {
+        DeleteAsyncTaskUpdate().execute(game)
+    }
+
+    private inner class DeleteAsyncTaskUpdate : AsyncTask<Game, Void, String>() {
+
+        override fun doInBackground(vararg params: Game): String {
+            bd.gameDao().remove(params[0])
+            return ""
+        }
+    }
+
     private inner class InsertAsyncTaskUpdate : AsyncTask<Game, Void, String>() {
 
         override fun doInBackground(vararg params: Game): String {

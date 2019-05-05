@@ -38,8 +38,12 @@ class AboutAppFragment : Fragment() {
            it.application.applicationContext.packageName
             val pInfo = context.packageManager.getPackageInfo(context.packageName,0)
             val version = pInfo.versionName
-            tvVersion.setText("Versao: "+version)
+            val versionText = getString(R.string.version) + ": $version"
+            tvVersion.setText(versionText)
         }
+        val text = getString(R.string.author) + ": Henrique Lima"
+        tvAutor.setText(text)
+
 
         btLigar.setOnClickListener {
             val tel = "01155879654"

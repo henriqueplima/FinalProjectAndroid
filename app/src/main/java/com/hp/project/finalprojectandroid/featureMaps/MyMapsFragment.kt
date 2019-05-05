@@ -2,6 +2,7 @@ package com.hp.project.finalprojectandroid.featureMaps
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -47,7 +48,11 @@ class MyMapsFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        btOpenMaps.setOnClickListener {
+            val query = "games"
+            val geo = "geo:0,0?q=$query"
+            exibirNoMapa(geo)
+        }
 
 
         activity?.supportFragmentManager?.let {
@@ -62,6 +67,13 @@ class MyMapsFragment : Fragment(), OnMapReadyCallback {
         }
         //= activity?.supportFragmentManager?.findFragmentById(R.id.map) as SupportMapFragment
        // mapFragment.getMapAsync(this)
+    }
+
+    fun exibirNoMapa(geo: String){
+        val geoURI = Uri.parse(geo)
+        val intent = Intent(Intent.ACTION_VIEW, geoURI)
+        intent.setPackage("com.google.android.apps.maps")
+        startActivity(intent)
     }
 
 
